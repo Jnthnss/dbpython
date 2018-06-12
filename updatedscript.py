@@ -15,7 +15,7 @@ base = pd.read_csv('test.csv')
 length = len(base.columns)
 pos = [0, 1, 2, 8, 9, 10, 19, 28]
 pos2 = range(35, length)
-colnames = pos + pos2
+colnames = [0, 1, 2, 8, 9, 10, 19, 28] & [range(35, length)]
 
 final = pd.read_csv('test.csv', usecols = colnames)
 
