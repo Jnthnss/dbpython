@@ -11,9 +11,10 @@ sys.setdefaultencoding('utf8')
 # Establish original csv to read from: "base"
 base = pd.read_csv('Cisco NVS File 6_11_2018-06-11_124799_output.csv')
 
-# Establish range of columns needed - in this script will need to keep match type, column #8
+# Establish range of columns needed - will need to keep Match Type and Active status for filters 
 length = len(base.columns)
 pos = [0, 1, 2, 8, 9, 10, 19, 28]
+# From column 35 on is all custom attributes, so must include all columns that appear
 pos2 = range(35, length)
 colnames = pos + pos2
 
@@ -48,6 +49,5 @@ writer = pd.ExcelWriter('Cisco NVS File 6_11_2018-06-11_124799_output.xlsx', eng
 
 reachable_sort.to_excel(writer, sheet_name = 'Reachable', index = False)
 not_reachable_sort.to_excel(writer, sheet_name = 'Not Reachable', index = False)
-# only reachable and not reachable sorted by MEI 
 no_match_df.to_excel(writer, sheet_name = 'No Match', index = False)
 duplicate_df.to_excel(writer, sheet_name = 'Duplicates', index = False)
